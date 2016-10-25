@@ -1,5 +1,18 @@
 \documentclass[a4paper]{article}
 
+%maximum figure number
+\setcounter{totalnumber}{5}
+
+%plus minus
+\newcommand{\mypm}{\mathbin{\smash{%
+\raisebox{0.35ex}{%
+            $\underset{\raisebox{0.5ex}{$\smash -$}}{\smash+}$%
+            }%
+        }%
+    }%
+}
+
+
 %figure inside text
 \usepackage{wrapfig}
 
@@ -198,6 +211,7 @@ BoldFont={KoPubDotum Medium}]{KoPubDotum Light}
 	\section{Result}
 
 		\subsection{전류천칭의 전류에 따른 토크의 변화}
+
 		\begin{figure}[h]
 			\centering
 			\begin{tabular}{cccccccccc} 
@@ -212,18 +226,23 @@ BoldFont={KoPubDotum Medium}]{KoPubDotum Light}
 			\label{tb:cirouput}
 		\end{figure}
 
-		\vspace{-0.7cm}
-		
+		\vspace{-0.5cm}
+
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=0.4\textwidth]{img/figure_1.png}
-			\vspace{-0.5cm}
-			\caption{천칭에 인가된 전류와 그에 따른 가리키게의 길이와 위치의 변화}
+			\subfigure[천칭에 인가된 전류와 그에 따른 가리키게의 위치 변화]{
+				\includegraphics[width=0.45\textwidth]{img/figure_1.png}
+			}
+			\subfigure[파란색:+0.1\si{cm}, 초록색:-0.1\si{cm}의 오차가 허용된 추세선]{
+				\includegraphics[width=0.45\textwidth]{img/figure_1-error.png}
+				\label{fig:error1}
+			}
 		\end{figure}
-
-		\vspace{-1cm}
+		천칭에 인가된 전류를 바꾸어가며 그에 따른 가리키게의 길이와 변위의 변화를 표와 그래프로 나타낸 것이다.
+		측정장비의 오차를 반영하여 가리키게의 변위에 $\mypm{}0.1\si{cm}$의 오차를 반영한 그래프도 그렸다. 
 
 		\subsection{솔레노이드의 전류에 따른 토크의 변화}
+
 		\begin{figure}[h]
 			\centering
 				\begin{tabular}{cccccc} 
@@ -237,13 +256,21 @@ BoldFont={KoPubDotum Medium}]{KoPubDotum Light}
 				\end{tabular}  
 			\label{tb:soloutput}
 		\end{figure}
+
+		\vspace{-0.5cm}
 		
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=0.4\textwidth]{img/figure_2.png}
-			\vspace{-0.5cm}
-			\caption{솔레노이드에 인가된 전류와 그에 따른 가리키게의 길이와 위치의 변화}
+			\subfigure[솔레노이드에 인가된 전류와 그에 따른 가리키게의 위치변화]{
+				\includegraphics[width=0.45\textwidth]{img/figure_2.png}
+			}
+			\subfigure[파란색:+0.1\si{cm}, 초록색:-0.1\si{cm}의 오차가 허용된 추세선]{
+				\includegraphics[width=0.45\textwidth]{img/figure_2-error.png}
+				\label{fig:error2}
+			}
 		\end{figure}
+		솔레노이드에 인가된 전류를 바꾸어가며 그에 따른 가리키게의 길이와 변위의 변화를 표와 그래프로 나타낸 것이다.
+		측정장비의 오차를 반영하여 가리키게의 변위에 $\mypm{}0.1\si{cm}$의 오차를 반영한 그래프도 그렸다.
 
 	
 
@@ -258,12 +285,22 @@ BoldFont={KoPubDotum Medium}]{KoPubDotum Light}
 
 	솔레노이드의 규격, 천칭의 규격등은 모두 실험실에서 측정되었으나 천칭의 무게중심과 받침점 사이의 거리인 $d$를 측정하지 못했기 때문에 실험과 이론의 비례상수를 비교하지는 못했다. 
 
-	오차분석을 해보면 첫 번째로 $\Delta{}x$가 $F$와 선형적으로 비례하지 않는 것을 원인으로 들 수 있다. 실제로는 $\sin{\Delta{}x}$에 비례하는 값이어야 한다.
-	그럼에도 실험값이 직선형에 가깝게 나온 것은 가리키게의 변위(최대 2.4\si{cm})보다 천칭의 길이(24\si{cm})가 훨씬 커서 $\theta$가 매우 작기 떄문으로 보인다.
+	오차분석을 해보면 첫 번째로 $\Delta{}x$가 $F$와 선형적으로 비례하지 않는 것을 원인으로 들 수 있다. 
+	실제로는 $\sin{\Delta{}x}$에 비례하는 값이어야 한다.
+	그럼에도 실험값이 직선형에 가깝게 나온 것은 가리키게의 변위(최대 2.4\si{cm})보다 천칭의 길이(24\si{cm})가 훨씬 커서 $\theta$가 매우 작기 때문으로 보인다.
+	$\theta=\frac{2.4}{24}=0.1$에서 $y=x$와 $y=sinx$의 상대오차는 $\frac{0.1-\sin{0.1}}{0.1}=1.6 \times 10^{-3}$으로 우리의 측정장비(0.2\si{cm})의 한계로 측정되지 않는 수준이다. 
 	두 번째는 천칭 받침점의 마찰력으로 생각된다.
 	실험을 할 때 전류를 바꿨음에도 천칭이 기울어진 각도가 변하지 않는 경우가 있었다.
-	때문에 천칭을 손으로 살짜 건드려준 후에야 새로운 평형 각도로 옮겨가는 것을 볼 수 있었다.
+	이런 경우, 천칭을 손으로 살짜 건드려준 후에야 새로운 평형 각도로 옮겨가는 것을 볼 수 있었다.
+	이러한 결과는 유의미한 마찰력의 존재를 시사한다.
+	
 	그러나 실험이 전반적으로 이론적인 예측과 잘 일치했고 두 실험의 그래프에 나타나듯이 오차에 방향성이 없는 것을 보아 오차의 대부분은 우연오차로 보는 것이 타당하다.
+		
+	그러나 이러한 오차들은 실험기구의 정밀성을 고려하면 모두 허용될 수 있는 범위의 오차다.
+	가리키게의 눈금은 0.2\si{cm}였는데 눈으로 이 값을 측정할 때 두 눈금 사이에 값이 위치하는 경우가 많았다.
+	그래서 실험자는 두 눈금 사이에 가리키게가 위치했을 때 임의적으로 0.1\si{cm}로 끊었다.
+	이를 반영하여 Result의 그래프(\ref{fig:error1})에서 $\mypm{}0.1\si{cm}$의 오차를 허용하면 모든 점들이 두 직선 사이에 들어가는 것을 볼 수 있었다.
+	이로부터 결과의 오차는 측정 장비의 정밀도에 많은 영향을 받았음을 알 수 있었다.
 
 
 
