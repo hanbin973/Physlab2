@@ -3,18 +3,18 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import scipy.stats
 
-x = np.array([0,0.3,0.5,0.75,1.0,1.25,1.5,1.75,2.0])
-y = np.array([0.2, 0.0, -0.1, -0.4, -0.6, -0.8, -1.2, -1.4, -1.7])
+x = np.array([2, 3, 4])
+y = np.array([1.83, 1.13, 0.877])
 
 def fit_func(x, a, b):
-	return a * x + b
+	return a * (1/x) + b
 
 para = curve_fit(fit_func, x, y)
 a = para[0][0]
 b = para[0][1]
 print (para)
 
-#z = fit_func(x, a, b)
+z = fit_func(x, a, b)
 
 def rsquared(x, y):
 	""" Return R^2 where x and y are array-like."""
@@ -22,11 +22,12 @@ def rsquared(x, y):
 	slope, intercept, r_value, p_value, std_err = scipy.stats.linregress(x, y)
 	return r_value**2
 
-#print (rsquared(x, z))
+print (rsquared(y, z))
 
 plt.plot(x, y ,'ro') 
 plt.plot(x, fit_func(x, a, b))
-plt.axis([0, 5, 1, -2])
-#plt.ylabel('Weight Loss(g)')
-#plt.xlabel('Distance between plates(cm)')
+#plt.plot(x, fit_func(x, a, b)+0.1)
+plt.axis([0, 5, 0, 2])
+plt.ylabel('Magnatic Field (mT)')
+plt.xlabel('Distance (cm)')
 plt.show()

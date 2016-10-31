@@ -14,7 +14,7 @@ a = para[0][0]
 b = para[0][1]
 print (para)
 
-#z = fit_func(x, a, b)
+z = fit_func(x, a, b)
 
 def rsquared(x, y):
 	""" Return R^2 where x and y are array-like."""
@@ -22,11 +22,12 @@ def rsquared(x, y):
 	slope, intercept, r_value, p_value, std_err = scipy.stats.linregress(x, y)
 	return r_value**2
 
-#print (rsquared(x, z))
+print (rsquared(x, z))
 
 plt.plot(x, y ,'ro') 
-plt.plot(x, fit_func(x, a, b))
+plt.plot(x, fit_func(x, a, b)-0.1)
+plt.plot(x, fit_func(x, a, b)+0.1)
 plt.axis([0, 5, 1, -2])
-#plt.ylabel('Weight Loss(g)')
-#plt.xlabel('Distance between plates(cm)')
+plt.ylabel('Displacement of Pointer(cm)')
+plt.xlabel('Current Balance Current(A)')
 plt.show()
